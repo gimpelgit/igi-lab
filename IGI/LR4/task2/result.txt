@@ -9,6 +9,6 @@ Word count: 78
 Maximum word length: necessitatibus
 Index maximum word length: 26
 All the words that start with a lowercase letter: ['ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipisicing', 'elit', 'reiciendis', 'rem', 'praesentium', 'asperiores', 'quam', 'tenetur', 'saepe', 'mollitia', 'animi', 'dignissimos', 'laborum', 'eveniet', 'quaerat', 'aut', 'doloribus', 'eveniet', 'necessitatibus', 'iusto', 'aE', 'dC', 'cA', 'commodi', 'in', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipisicing', 'elit', 'autem', 'ratione', 'id', 'praesentium', 'voluptatem', 'nam', 'facere', 'iusto', 'dolorum', 'non', 'temporibus', 'repellendus', 'minus', 'mollitia', 'eaque', 'saepe', 'itaque', 'dicta', 'ducimus']
-All punctuation: {'-', '?', '!', ';', ',', '.', ':'}
+All punctuation: {':', '!', '?', ';', ',', '-', '.'}
 Odd length words: ['Lorem', 'ipsum', 'dolor', 'sit', 'consectetur', 'adipisicing', 'Nostrum', 'rem', 'praesentium', 'tenetur', 'saepe', 'animi', 'dignissimos', 'laborum', 'eveniet', 'quaerat', 'aut', 'doloribus', 'eveniet', 'iusto', 'commodi', 'Lorem', 'ipsum', 'dolor', 'sit', 'consectetur', 'adipisicing', 'autem', 'ratione', 'praesentium', 'nam', 'iusto', 'dolorum', 'non', 'repellendus', 'minus', 'eaque', 'saepe', 'dicta', 'ducimus']
 All mac addresses: ['aE-dC-cA-56-76-54', '3f:Dc:8B:45:7a:C9']

@@ -22,7 +22,7 @@ def task1():
 		case 2:
 			path = "task1/task1.pickle"
 			serializer = PickleSerializer
-	
+
 	serializer.serialize(all_workloads, path)
 	loaded_workloads = serializer.deserialize(path)
 	print("Full school workload")
