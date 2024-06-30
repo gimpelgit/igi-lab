@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Вакансии {% endblock %}
+
+{% block content %} 
+	<h1> Вакансии </h1>
+	{% for v in vacancy %}
+		<div>
+			<h3>{{ v.name }}</h3>
+			<p><b>Описание</b></p>
+			<p> {{ v.description }}</p>
+		</div>
+		{% if not forloop.last %}
+			<hr>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

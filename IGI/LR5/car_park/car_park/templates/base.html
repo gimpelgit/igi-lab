@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} Автостоянка {% endblock %}</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="{% url 'index' %}">Главная</a></li>
+				<li><a href="{% url 'about' %}">О компании</a></li>
+				<li><a href="{% url 'news' %}">Новости</a></li>
+				<li><a href="{% url 'faq' %}">Словарь терминов и понятий</a></li>
+				<li><a href="{% url 'contacts' %}">Контакты</a></li>
+				<li><a href="{% url 'privacy' %}">Политика конфиденциальности</a></li>
+				<li><a href="{% url 'vacancy' %}">Вакансии</a></li>
+				<li><a href="{% url 'reviews' %}">Отзывы</a></li>
+				<li><a href="{% url 'promotions' %}">Промокоды и купоны</a></li>
+				<li><a href="{% url 'random-dog' %}">Случайная собака</a></li>
+				{% if not user.is_staff %}
+					<li><a href="{% url 'personal-cabinet' %}">Личный кабинет</a></li>
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'bank-cards' %}">Мои карты</a></li>
+						<li><a href="{% url 'accrual' %}">Пополнение счета</a></li>
+						<li><a href="{% url 'cars' %}">Машины</a></li>
+						<li><a href="{% url 'parking-spaces' %}">Парковочные места</a></li>
+					{% endif %}
+				{% else %}
+					<li><a href="{% url 'staff-cabinet' %}">Кабинет сотрудника</a></li>
+					<li><a href="{% url 'client-balance' %}">Баланс клиентов</a></li>
+				{% endif %}
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'logout' %}">Выйти</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}">Войти</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		{% block content %} {% endblock %}
+	</main>
+</body>
+
+<footer>
+	<p>&copy; 2024 Автостоянка. Все права защищены.</p>
+</footer>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Кабинет сотрудника {% endblock %}
+
+{% block content %}
+	<h2>Информация о сотруднике</h2>
+
+	<p>Ник: {{ user.username }}</p>
+	<p>Имя: {{ user.first_name }}</p>
+	<p>Фамилия: {{ user.last_name }}</p>
+	<p>Почта: {{ user.email }}</p>
+	<p>Номер телефона: {{ user.employee.phone_number }}</p>
+	<img src="data:image/png;base64,{{ image }}" alt="Доходы комнат">
+
+{% endblock %}

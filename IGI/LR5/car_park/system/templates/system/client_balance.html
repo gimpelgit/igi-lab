@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Баланс клиентов {% endblock %}
+
+{% block content %}
+	<h1>Баланс клиентов</h1>
+	<form action="{% url 'client-balance' %}" method="post">
+		{% csrf_token %}
+		<label for="start_date">Начальная дата:</label>
+		<input type="date" id="start_date" name="start_date" value="{{ start_date|date:'Y-m-d' }}" required><br><br>
+		<label for="end_date">Конечная дата:</label>
+		<input type="date" id="end_date" name="end_date" value="{{ end_date|date:'Y-m-d' }}" required><br><br>
+		<button type="submit">Рассчитать</button>
+	</form>
+
+	{% if client_balance %}
+	<h2>Результат расчета баланса</h2>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Имя</th>
+			<th>Почта</th>
+			<th>Баланс</th>
+			<th>История оплат</th>
+		</tr>
+		{% for client in client_balance %}
+			<tr>
+				<td>{{ client.client.id }}</td>
+				<td>| {{ client.client.user.get_full_name }}</td>
+				<td>| {{ client.client.user.email }}</td>
+				<td>| {{ client.total }}</td>
+				<td>| <a href="{% url 'client-payments' client.client.id %}?start_date={{ start_date|date:'Y-m-d' }}&end_date={{ end_date|date:'Y-m-d' }}">Перейти</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+
+{% endblock %}

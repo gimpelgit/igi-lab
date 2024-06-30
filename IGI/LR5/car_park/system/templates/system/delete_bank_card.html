@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить банковскую карточку{% endblock %}
+
+{% block content %}
+	<h2>Удалить банковскую карточку</h2>
+	<p>Вы уверены, что хотите удалить карточку {{ card.number_card }}?</p>
+	<form method="post">
+		{% csrf_token %}
+		<button type="submit">Удалить</button>
+	</form>
+{% endblock %}

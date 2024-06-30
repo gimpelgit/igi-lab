@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %} 
+	<h1> {{ title }} </h1>
+
+	{% if coupons %}
+		{% for coupon in coupons %}
+			<p><b>Код купона:</b> {{ coupon.code }}</p>
+			<p><b>Описание:</b> {{coupon}}</p>
+			{% if coupon.price == 0 %}
+				<p>Купон абсолютно бесплатный!</p>
+				<a href="{% url 'get-coupon' coupon.id %}">Получить</a>
+			{% else %}
+				<p>Вы можете купить купон за {{coupon.price}} BYN</p>
+				<a href="#">Купить</a>
+			{% endif %}
+			{% if not forloop.last%}
+				<hr>
+			{% endif %}	
+		{% endfor %}
+	{% else %}
+		<p>Нет доступных купонов</p>
+	{% endif %}
+{% endblock %}

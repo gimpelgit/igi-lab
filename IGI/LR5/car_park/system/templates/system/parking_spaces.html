@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Парковочные места {% endblock %}
+
+{% block content %}
+	<h2>Парковочные места</h2>
+	<form method="GET">
+		<label for="price">Цена</label>
+		<select name="order" id="order">
+			<option value="default">По умолчанию</option>
+			<option value="ascending_order">Сначала самые дешевые</option>
+			<option value="descending_order">Сначала самые дорогие</option>
+		</select>
+		<button type="submit">Применить</button>
+	</form>
+	{% for parking_space in parking_spaces %}
+		<div>
+			<h3><a href="{% url 'parking-space' parking_space.number %}">Номер: {{ parking_space.number  }}</a></h3>
+			<p><b>Стоимость за 1 день:</b> {{ parking_space.cost_per_day }} BYN </p>
+			<p><b>Статус:</b> {% if parking_space.client is None %} Свободно {% else %} Занято {% endif %} </p>
+			{% if parking_space.image %}
+				<img src="{{ parking_space.image.url }}" alt="Здесь должно быть изображение" width="auto" height="200">
+			{% endif %}
+		</div>
+		{% if not forloop.last%}
+			<hr>
+		{% endif %}
+	{% empty %}
+		<div>Не найдено парковочных мест</div>
+	{% endfor %}
+{% endblock %}

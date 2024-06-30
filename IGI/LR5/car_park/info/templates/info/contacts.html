@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %} 
+	<h1> {{ title }} </h1>
+	{% for employee in employees %}
+		<div>
+			<h3>{{ employee.vacancy.name }}</h3>
+			<p><b>Имя:</b> {{ employee.user.first_name }} {{ employee.user.last_name }}</p>
+			<p><b>Телефон:</b> {{ employee.phone_number }}</p>
+			<p><b>Почта:</b> {{ employee.user.email }}</p>
+			{% if employee.image %}
+				<img src="{{ employee.image.url }}" alt="Здесь должно быть изображение" width="auto" height="200">
+			{% endif %}
+		</div>
+		{% if not forloop.last %}
+			<hr>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

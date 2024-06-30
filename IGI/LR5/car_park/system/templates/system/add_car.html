@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Добавить машину {% endblock %}
+
+{% block content %} 
+	<h2> Добавить машину </h2>
+
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		{% if is_number %}
+			<p>У вас уже есть машина с таким номером</p>
+		{% endif %}
+		<button type="submit">Сохранить</button>
+
+	</form>
+{% endblock %}

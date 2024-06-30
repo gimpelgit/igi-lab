@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Мои машины {% endblock %}
+
+{% block content %} 
+	<h2>Мои машины</h2>
+
+	<button type="button">
+		<a href="{% url 'add-car' 0 %}">Добавить машину</a>
+	</button>
+	{% for car in cars %}
+		<div>
+			<p>Название: {{car.name}} </p>
+			<p>Модель: {{car.model}} </p>
+			<p>Марка: {{car.brand}} </p>
+			<p>Рег. знак: {{car.number}} </p>
+			<a href="{% url 'add-car' car.id %}"> Изменить |</a>
+			<a href="{% url 'delete-car' car.id %}"> Удалить</a>
+		</div>
+		{% if not forloop.last %}
+			<hr>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

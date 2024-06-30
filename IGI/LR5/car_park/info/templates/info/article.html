@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+	<h1>{{ article.title }}</h1>
+
+	<p>Краткое описание: {{ article.summary }}</p>
+	<p>Последнее изменение: {{ article.last_modification_date }}</p>
+
+	{% if article.image %}
+		<img src="{{ article.image.url }}" alt="Здесь должно быть изображение" width="auto" height="200">
+	{% endif %}
+	<p>{{ article.body }}</p>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Личный кабинет {% endblock %}
+
+{% block content %}
+	<h2>Информация о пользователе </h2>
+
+	<p>Ник: {{ user.username }}</p>
+	<p>Имя: {{ user.first_name }}</p>
+	<p>Фамилия: {{ user.last_name }}</p>
+	<p>Почта: {{ user.email }}</p>
+	<p>Номер телефона: {{ user.client.phone_number }}</p>
+	<p>Баланс: {{ balance }}</p>
+
+	<h3>Платежи</h3>
+	{% for payment in payments %}
+		<div>
+			<p>Дата оплаты: {{ payment.payment_date }}</p>
+			<p>Дата начала брони: {{ payment.reservation_start_date }}</p>
+			<p>Дата конца брони: {{ payment.reservation_end_date }}</p>
+			<p>Стоимость брони: {{ payment.total_cost }}</p>
+			<p>Номер парковочного места: {{ payment.number_parking_space }}</p>
+			<p>Машина: {{ payment.car }}</p>
+		</div>
+		{% if not forloop.last%}
+			<hr>
+		{% endif %}
+	{% endfor %}
+
+	<hr>
+	<h3>Пополнение счета</h3>
+	{% if accruals %}
+		{% for accrual in accruals %}
+			<div>
+				<p>Дата пополнения: {{ accrual.date|date:'F Y' }}</p>
+				<p>Сумма пополнения: {{ accrual.amount }}</p>
+				<p>Карта: {{ accrual.bank_card }}</p>
+			</div>
+			{% if not forloop.last%}
+				<hr>
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<p>Вы не пополняли счет</p>
+	{% endif %}
+	
+	<hr>
+	<h3>Ваши купоны</h3>
+	{% if coupons %}
+		{% for coupon in coupons %}
+			<p><b>Код купона:</b> {{ coupon.code }}</p>
+			<p><b>Описание:</b> {{coupon}}</p>
+			{% if not forloop.last%}
+				<hr>
+			{% endif %}	
+		{% endfor %}
+	{% else %}
+		<p>У вас нету доступных купонов</p>
+	{% endif %}
+{% endblock %}

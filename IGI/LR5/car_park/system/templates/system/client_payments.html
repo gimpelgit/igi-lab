@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} История оплат клиента {% endblock %}
+
+{% block content %}
+	<h2>История оплат клиента {{ client.user.get_full_name }}</h2>
+
+	{%if payments %}
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Дата оплаты</th>
+				<th>Дата начала бронирования</th>
+				<th>Дата окончания бронирования</th>
+				<th>Номер машины</th>
+				<th>Модель машины</th>
+				<th>Марка машины</th>
+				<th>Номер парковочного места</th>
+				<th>Стоимость</th>
+			</tr>
+			{% for payment in payments %}
+				<tr>
+					<td>{{ payment.id }}</td>
+					<td>| {{ payment.payment_date }}</td>
+					<td>| {{ payment.reservation_start_date }}</td>
+					<td>| {{ payment.reservation_end_date }}</td>
+					<td>| {{ payment.car.number }}</td>
+					<td>| {{ payment.car.model }}</td>
+					<td>| {{ payment.car.brand }}</td>
+					<td>| {{ payment.number_parking_space }}</td>
+					<td>| {{ payment.total_cost }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Здесь пусто</p>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+	<h1> {{ title }} </h1>
+	
+	{% for article in articles %}
+		<div>
+		<h2>{{ article.title }}</h2>
+		<p>Краткое описание: {{ article.summary }}</p>
+		<p>Последнее изменение: {{ article.last_modification_date }}</p>
+		{% if article.image %}
+			<img src="{{ article.image.url }}" alt="Здесь должно быть изображение" width="auto" height="150">
+		{% endif %}
+		</br>
+		<a href="{% url 'article' article.id %}">Читать далее</a>
+		{% if not forloop.last %}
+			<hr>
+		{% endif %}
+		</div>
+	{% endfor %}
+	
+{% endblock %}

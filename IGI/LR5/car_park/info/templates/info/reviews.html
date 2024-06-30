@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+	<h1> {{ title }} </h1>
+	{% for review in reviews %}
+		<div>
+			<h2>{{ review.client.user.get_full_name }}</h2>
+			<p>{{ review.body|linebreaks }}</p>
+			<p>
+				{% with ''|center:review.grade as range %}
+					{% for _ in range %}
+						&hearts;
+					{% endfor %}
+				{% endwith %}
+			</p>
+		</div>
+		{% if not forloop.last %}
+			<hr>
+		{% endif %}
+	{% empty %}
+		<p>Нет отзывов</p>
+	{% endfor %}
+
+	{% if not user.is_staff %}
+		<button type="submit">
+			{% if user.is_authenticated %}
+				<a href="{% url 'add-review' %}">Добавить отзыв</a>
+			{% else %}
+				<a href="{% url 'login' %}">Войти</a>
+			{% endif %}
+		</button>
+	{% endif %}
+{% endblock %}
