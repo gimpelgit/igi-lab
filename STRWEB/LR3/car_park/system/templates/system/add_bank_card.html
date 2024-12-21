@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Добавить банковскую карточку{% endblock %}
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/system/add_bank_card.css' %}">
+{% endblock %}
+
+{% block content %}
+	<h2>Добавить банковскую карточку</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Добавить</button>
+	</form>
+	<br>
+	<a href="{% url 'bank-cards' %}">Назад к списку</a>
+{% endblock %}

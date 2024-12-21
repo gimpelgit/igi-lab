@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_anim.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+{% endblock %}
+
+
+{% block content %}
+	<h1> {{ title }} </h1>
+
+    <!-- Слайдер -->
+    <div id="slider" class="slider">
+        <div class="slider-container">
+            <div class="slide">
+                <img src="{% static 'img/slide_1.jpg' %}" alt="Slide 1">
+                <div class="caption">Какой-то очень важный текст </div>
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/slide_2.jpg' %}" alt="Slide 2">
+                <div class="caption">Обязательно прочти меня</div>
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/slide_3.jpg' %}" alt="Slide 3">
+                <div class="caption">Ты ведь прочитал?</div>
+            </div>
+        </div>
+        
+        <!-- Навигация -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <!-- Номер слайда -->
+        <div class="slide-number" id="slide-number">1 / 3</div>
+    </div>
+
+    <div class="delay-control">
+        <label for="delay-input">Интервал переключения (сек):</label>
+        <input type="number" id="delay-input" min="1" value="5" oninput="updateDelay()">
+    </div>
+
+
+    <!-- Анимация машины которая паркуется -->
+    <div class="container-anim">
+        <div class="carpark-marking">
+            <div class="horizontal top"></div>
+            <div class="horizontal down"></div>
+            <div class="vertical"></div>
+        </div>
+        <div class="container-car">
+            <div class="car">
+                <div class="wheel wheel-left"></div>
+                <div class="wheel wheel-right"></div>
+            </div>
+            <div class="headlight"></div>
+        </div>
+        <div class="company-name">ParkEase</div>
+    </div>
+
+	<div class="last-article">
+		<h2> Последняя статья </h2>
+		{% if article %}
+			<h3>{{ article.title }}</h3>
+			<p>Краткое описание: {{ article.summary }}</p>
+			<p>Последнее изменение: {{ article.last_modification_date }}</p>
+			{% if article.image %}
+				<img src="{{ article.image.url }}" alt="Здесь должно быть изображение" width="auto" height="150">
+			{% endif %}
+			</br>
+			<a href="{% url 'article' article.id %}">Читать далее</a>
+		{% else %}
+			<p> Нет доступных статей </p>
+		{% endif %}
+	</div>
+	
+	<div class="partners">
+		<h2> Наши партнеры </h2>
+		{% for company in companies %}
+			<div class="partner">
+                <a class="partner-logo-link" href="{{ company.website_link }}">
+                    <img class="partner-logo-img" src="{{ company.logo.url }}">
+                </a>
+            </div>
+		{% endfor %}
+	</div>
+
+    <!-- Прелоадер начало -->
+    <div class="container-circle anim-right" style="
+            --circle-content: 100;
+            --border-width: 10;
+            --cut-height-circle-percent: 42;
+            --circle-rotate: 60deg;
+            ">
+        <div class="circle"></div>
+        <div class="mini-circle left-circle"></div>
+        <div class="mini-circle right-circle"></div>
+
+        <div class="container-circle " style="
+                --circle-content: 100;
+                --border-width: 10;
+                --cut-height-circle-percent: 42;
+                --circle-rotate: 180deg;
+                ">
+            <div class="circle"></div>
+            <div class="mini-circle left-circle"></div>
+            <div class="mini-circle right-circle"></div>
+
+            <div class="container-circle anim-left" style="
+                    --circle-content: 68;
+                    --border-width: 8;
+                    --cut-height-circle-percent: 20;
+                    --circle-rotate: 120deg;
+                    ">
+                <div class="circle"></div>
+                <div class="mini-circle left-circle"></div>
+                <div class="mini-circle right-circle"></div>
+            </div>
+        </div> 
+    </div>
+    <!-- Прелоадер конец-->
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/slider.js' %}"></script>
+{% endblock %}

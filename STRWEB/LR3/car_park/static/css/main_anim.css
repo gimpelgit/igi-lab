@@ -1,0 +1,178 @@
+.container-anim {
+    position: relative;
+    width: 700px;
+    height: 200px;
+    background-color: #a6a5a1;
+    overflow: hidden;
+}
+
+.container-car {
+    position: absolute;
+    width: 30%;
+    height: 120px;
+    bottom: 30px;
+    left: -250px;
+    z-index: 5;
+
+    animation: car-arrived 5s linear forwards 1,
+        car-gone 5s linear 10s forwards 1;
+}
+
+.car {
+    --color-car: #e8f641;
+}
+
+.car { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0px;
+    left: 0;
+    background-image: url("../img/anim-car.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    z-index: 5;
+}
+
+.wheel {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    background-image: url("../img/wheel.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    z-index: 5;
+    animation: move-wheel 1.4s linear forwards 3.7, 
+        move-wheel 1.4s linear 10s forwards 3.7;
+}
+
+.wheel-left {
+    left: 23px;
+    bottom: 13px;
+}
+
+.wheel-right {
+    left: 121px;
+    bottom: 13px;
+}
+
+
+@keyframes move-wheel {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.headlight {
+    position: absolute;
+    right: 12px;
+    bottom: 52px;
+    width: 12%;
+    height: 12%;
+    border-radius: 0 90% 0 90%;
+    background-color: #ffff00;
+    z-index: 1;
+
+    animation: headlight-flash 0.5s linear alternate 10, 
+        headlight-flash 0.5s linear 10s alternate 10;
+}
+
+@keyframes headlight-flash {
+    0% {
+        background-color: #ffff00;
+    }
+    100% {
+        background-color: #a8a839;
+    }
+}
+
+
+
+.carpark-marking {
+    position: absolute;
+    width: 70%;
+    height: 90px;
+    bottom: 30px;
+    left: 15%;
+    z-index: 1;
+    animation: hide-carpark-marking 1s linear 13s forwards; 
+}
+
+.horizontal {
+    position: absolute;
+    width: 100%;
+    height: 12px;
+    background-color: white;
+}
+
+.top {
+    left: 0px;
+    top: 0px;
+}
+
+.down {
+    left: 0px;
+    bottom: 0px;;
+}
+
+.vertical {
+    position: absolute;
+    width: 12px;
+    height: 100%;
+    left: calc(50% - 6px);
+    top: 0;
+    background-color: white;
+}
+
+
+@keyframes hide-carpark-marking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes car-arrived {
+    100% {
+        left: 50%;
+    }
+}
+
+@keyframes car-gone {
+    100% {
+        left: calc(100% + 100px);
+    }
+}
+
+.company-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: #333;
+    opacity: 0;
+    z-index: 10;
+
+    animation: show-company-name 1.5s ease-in-out 14s forwards;
+}
+
+@keyframes show-company-name {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}

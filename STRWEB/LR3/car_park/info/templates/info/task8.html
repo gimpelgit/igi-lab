@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Задание 8 {% endblock %}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/task8.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="parking-area">
+    <div class="parking-column">
+        <div class="parking-spot">
+            <div class="car car1"></div>
+        </div>
+        <div class="parking-spot">
+            <div class="car car-main" id="main-car"></div>
+        </div>
+        <div class="parking-spot"></div>
+    </div>
+    <div class="parking-column">
+        <div class="parking-spot"></div>
+        <div class="parking-spot">
+            <div class="car car1 car-reverse"></div>
+        </div>
+        <div class="parking-spot">
+            <div class="car car2"></div>
+        </div> 
+    </div>
+</div>
+{% endblock %} 
+{% block js %} 
+    <script src="{% static 'js/task8.js' %}"></script>
+{% endblock %}

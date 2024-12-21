@@ -1,0 +1,28 @@
+.employees-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.employees-title {
+    text-align: center;
+}
+
+.employee-card {
+    display: flex;
+    background-color: #f9f9f9;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.employee-img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.employee-info {
+    padding-left: 20px;
+}

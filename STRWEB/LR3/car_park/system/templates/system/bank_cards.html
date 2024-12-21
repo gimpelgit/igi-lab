@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Мои банковские карточки{% endblock %}
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/system/bank_cards.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="page-title">Мои банковские карточки</h2>
+    <button class="add-card-btn">
+        <a href="{% url 'add-bank-card' %}">Добавить новую карточку</a>
+    </button>
+
+    <div class="cards-container">
+        {% for card in cards %}
+        <div class="card">
+            <div class="card-details">
+                <p class="card-name">{{ card }}</p>
+                <p class="card-expiry">Дата истечения: {{ card.expiry_date|date:'F Y' }}</p>
+            </div>
+            <div class="card-actions">
+                <a class="edit-btn" href="{% url 'edit-bank-card' card.id %}">Редактировать</a>
+                <a class="delete-btn" href="{% url 'delete-bank-card' card.id %}">Удалить</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>У вас пока нет добавленных карточек.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

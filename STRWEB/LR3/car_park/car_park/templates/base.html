@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="gimpelcomp">
+	{% block meta %} {% endblock %}
+	<title>{% block title %} Автостоянка {% endblock %}</title>
+	<link rel="icon" href="{{ main_company.logo.url }}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    {% block css %} {% endblock %}
+</head>
+<body>
+	<header class="nav-header">
+		<nav>
+			<ul class="nav-list">
+				<li class="nav-item">
+                    <a class="logo" href="{% url 'index' %}">
+					    <img src="{{ main_company.logo.url }}" alt="Логотип компании"/>
+                    </a>
+                </li>
+				<li class="nav-item"><a href="{% url 'about' %}">О компании</a></li>
+				<li class="nav-item"><a href="{% url 'news' %}">Новости</a></li>
+				<li class="nav-item"><a href="{% url 'faq' %}">FAQ</a></li>
+				<li class="nav-item"><a href="{% url 'contacts' %}">Контакты</a></li>
+				<li class="nav-item"><a href="{% url 'privacy' %}">Политика конфиденциальности</a></li>
+				<li class="nav-item"><a href="{% url 'vacancy' %}">Вакансии</a></li>
+				<li class="nav-item"><a href="{% url 'reviews' %}">Отзывы</a></li>
+				<li class="nav-item"><a href="{% url 'promotions' %}">Промокоды и купоны</a></li>
+				<li class="nav-item"><a href="{% url 'random-dog' %}">Случайная собака</a></li>
+				<li class="nav-item"><a href="{% url 'employee-list' %}">Страница</a></li>
+				{% if not user.is_staff %}
+					<li class="nav-item"><a href="{% url 'personal-cabinet' %}">Личный кабинет</a></li>
+					{% if user.is_authenticated %}
+						<li class="nav-item"><a href="{% url 'bank-cards' %}">Мои карты</a></li>
+						<li class="nav-item"><a href="{% url 'accrual' %}">Пополнение счета</a></li>
+						<li class="nav-item"><a href="{% url 'cars' %}">Машины</a></li>
+						<li class="nav-item"><a href="{% url 'parking-spaces' %}">Парковочные места</a></li>
+					{% endif %}
+				{% else %}
+					<li class="nav-item"><a href="{% url 'staff-cabinet' %}">Кабинет сотрудника</a></li>
+					<li class="nav-item"><a href="{% url 'client-balance' %}">Баланс клиентов</a></li>
+				{% endif %}
+				{% if user.is_authenticated %}
+					<li class="nav-item"><a href="{% url 'logout' %}">Выйти</a></li>
+				{% else %}
+					<li class="nav-item"><a href="{% url 'login' %}">Войти</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		{% block content %} {% endblock %}
+	</main>
+</body>
+
+<footer>
+	<p>&copy; 2024 {{ main_company.name }}. Все права защищены.</p>
+</footer>
+{% block js %} {% endblock %}
+</html>

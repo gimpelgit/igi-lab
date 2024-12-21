@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Мои машины{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/system/cars.css' %}">
+{% endblock %}
+
+{% block content %} 
+    <h2>Мои машины</h2>
+
+    <!-- Кнопка добавления машины -->
+    <div class="add-car">
+        <a href="{% url 'add-car' 0 %}" class="add-car-button">Добавить машину</a>
+    </div>
+
+    <!-- Список машин -->
+    <div class="cars-container">
+        {% for car in cars %}
+            <div class="car-card">
+                <div class="car-info">
+                    <p><strong>Название:</strong> {{ car.name }}</p>
+                    <p><strong>Модель:</strong> {{ car.model }}</p>
+                    <p><strong>Марка:</strong> {{ car.brand }}</p>
+                    <p><strong>Рег. знак:</strong> {{ car.number }}</p>
+                </div>
+                <div class="car-actions">
+                    <a href="{% url 'add-car' car.id %}" class="edit-button">Изменить</a>
+                    <a href="{% url 'delete-car' car.id %}" class="delete-button">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

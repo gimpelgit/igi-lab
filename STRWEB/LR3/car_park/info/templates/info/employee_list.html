@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Сотрудники {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/employee_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/info/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2>Сотрудники</h2>
+
+    <!-- Форма поиска -->
+    <form id="search-form">
+        <input type="text" id="search-input" placeholder="Поиск..." />
+        <button type="submit">Найти</button>
+    </form>
+
+    <!-- Таблица с сотрудниками -->
+    <table id="employee-table">
+        <thead>
+            <tr>
+                <th><a href="#" id="sort-name">ФИО</a></th>
+                <th><a href="#" id="sort-phone">Телефон</a></th>
+                <th><a href="#" id="sort-email">Email</a></th>
+                <th>Действия</th>
+                <th><input type="checkbox" id="select-all" onclick="selectAllCheckboxes()"> Выбрать</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Данные сотрудников будут загружаться сюда -->
+        </tbody>
+    </table>
+
+    <div id="pagination">
+        <!-- Навигация по страницам будет загружаться сюда -->
+    </div>
+
+    <button id="add-employee-button">Добавить сотрудника</button>
+
+    <div id="add-employee-form">
+        <h3>Добавить сотрудника</h3>
+        <form id="employee-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Поля для создания нового пользователя -->
+            <div id="new-user-fields">
+                <label for="first_name">Имя:</label>
+                <input type="text" id="first_name" name="first_name" required><br><br>
+    
+                <label for="last_name">Фамилия:</label>
+                <input type="text" id="last_name" name="last_name" required><br><br>
+    
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required><br><br>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+    
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required><br><br>
+            </div>
+    
+            <!-- Поля для сотрудника -->
+            <label for="phone_number">Телефон:</label>
+            <input type="text" id="phone_number" name="phone_number" required><br><br>
+    
+            <label for="salary">Зарплата:</label>
+            <input type="number" id="salary" name="salary" required><br><br>
+    
+            <label for="date_of_birth">Дата рождения:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required><br><br>
+    
+            <label for="vacancy">Вакансия:</label>
+            <select name="vacancy" id="vacancy" required>
+                <option value="">Выберите вакансию</option>
+                {% for vacancy in vacancies %}
+                    <option value="{{ vacancy.id }}">{{ vacancy.name }}</option>
+                {% endfor %}
+            </select><br><br>
+    
+            <label for="image">Фото:</label>
+            <input type="file" id="image" name="image"><br><br>
+    
+            <button type="submit">Добавить</button>
+            <button type="button" onclick="hideForm()">Отмена</button>
+        </form>
+        <p id="validation-message"></p>
+    </div>
+    
+
+    <div id="employee-details">
+        <!-- Блок для отображения подробной информации по сотруднику -->
+    </div>
+
+{% endblock %}
+
+{% block js %} 
+    <script src="{% static 'js/employee_list.js' %}"></script>
+{% endblock %}

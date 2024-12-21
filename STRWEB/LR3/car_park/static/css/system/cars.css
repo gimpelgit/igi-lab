@@ -1,0 +1,93 @@
+/* Заголовок */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* Кнопка добавления машины */
+.add-car {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-car-button {
+    text-decoration: none;
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-car-button:hover {
+    background-color: #45a049;
+}
+
+/* Контейнер для карточек машин */
+.cars-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Карточка машины */
+.car-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    width: 430px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Информация о машине */
+.car-info p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Действия с машиной */
+.car-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.car-actions a {
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.edit-button {
+    background-color: #007BFF;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #FF4136;
+}
+
+.delete-button:hover {
+    background-color: #e63628;
+}

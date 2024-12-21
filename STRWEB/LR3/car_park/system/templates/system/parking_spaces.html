@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Парковочные места {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/system/parking_spaces.css' %}"> 
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+        <div class="header">
+            <h1>Парковочные места</h1>
+        </div>
+        <form method="GET" class="filter-form">
+            <label>Цена</label>
+            <select name="order" id="order">
+                <option value="default" {% if request.GET.order == 'default' %}selected{% endif %}>По умолчанию</option>
+                <option value="ascending_order" {% if request.GET.order == 'ascending_order' %}selected{% endif %}>Сначала самые дешевые</option>
+                <option value="descending_order" {% if request.GET.order == 'descending_order' %}selected{% endif %}>Сначала самые дорогие</option>
+            </select>
+            <button type="submit">Применить</button>
+        </form>
+        <div class="parking-spaces">
+            {% for parking_space in page_parking_spaces %}
+                <div class="parking-space card-wrapper">
+                    <h3><a class="link-number" href="{% url 'parking-space' parking_space.number %}">Номер: {{ parking_space.number }}</a></h3>
+                    <p><b>Стоимость за 1 день:</b> {{ parking_space.cost_per_day }} BYN</p>
+                    <p><b>Статус:</b> {% if parking_space.client is None %} Свободно {% else %} Занято {% endif %}</p>
+                    {% if parking_space.image %}
+                        <img src="{{ parking_space.image.url }}" alt="Здесь должно быть изображение" width="auto" height="200">
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% for ii in number_empty %}
+                <div></div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_parking_spaces.has_previous %}
+                    <a href="?page={{ page_parking_spaces.previous_page_number }}&order={{ request.GET.order }}">Предыдущая</a>
+                {% else %}
+                    <a href="#" class="disabled">Предыдущая</a>
+                {% endif %}
+
+                <span class="current">
+                    Страница {{ page_parking_spaces.number }} из {{ page_parking_spaces.paginator.num_pages }}
+                </span>
+
+                {% if page_parking_spaces.has_next %}
+                    <a href="?page={{ page_parking_spaces.next_page_number }}&order={{ request.GET.order }}">Следующая</a>
+                {% else %}
+                    <a href="#" class="disabled">Следующая</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}
+{% block js %} 
+    <script src="{% static 'js/system/parking_spaces.js' %}"></script>
+{% endblock %}

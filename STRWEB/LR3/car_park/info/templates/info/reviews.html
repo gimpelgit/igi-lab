@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/info/reviews.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="reviews-container">
+		<h1 class="reviews-title">{{ title }}</h1>
+
+		{% if not user.is_staff %}
+            {% if user.is_authenticated %}
+                {% if add %}
+                    <a class="add-review-btn" href="{% url 'add-review' %}">Добавить отзыв</a>
+                {% else %}
+                    <a class="add-review-btn" href="{% url 'update-review' %}">Изменить отзыв</a>
+                {% endif %}
+            {% else %}
+                <a class="add-review-btn" href="{% url 'login' %}">Добавить отзыв</a>
+            {% endif %}
+		{% endif %}
+
+		{% for review in reviews %}
+			<div class="review">
+				<address class="author">
+					<b>{{ review.client.user.get_full_name }}</b>
+					<span class="review-rating">
+						{% with ''|center:review.grade as range %}
+							{% for _ in range %}
+								&hearts;
+							{% endfor %}
+						{% endwith %}
+					</span>
+				</address>
+				<blockquote class="review-body">
+					<p>{{ review.body|linebreaks }}</p>
+				</blockquote>
+			</div>
+		{% empty %}
+			<p class="no-reviews">Нет отзывов</p>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/info/privacy.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="settings-section">
+        <label>
+            <input type="checkbox" id="toggleSettings"> Показать настройки
+        </label>
+        <div id="settings" style="display: none;">
+            <h3>Настройки</h3>
+            <label for="fontSize">Размер шрифта:</label>
+            <select id="fontSize">
+                <option value="14px">Мелкий</option>
+                <option value="16px" selected>Средний</option>
+                <option value="18px">Крупный</option>
+            </select>
+
+            <label for="textColor">Цвет текста:</label>
+            <input type="color" id="textColor" value="#000000">
+
+            <label for="bgColor">Цвет фона:</label>
+            <input type="color" id="bgColor" value="#ffffff">
+        </div>
+    </section>
+	<section class="privacy-section">
+		<h1 class="privacy-title">Политика конфиденциальности</h1>
+		<p class="privacy-text">Мы уважаем вашу конфиденциальность и стремимся защищать ваши персональные данные.</p>
+	</section>
+	
+	<section class="privacy-section">
+		<h2 class="privacy-subtitle">Сбор данных</h2>
+		<p class="privacy-text">Мы собираем информацию, которую вы предоставляете при регистрации на нашем 
+			сайте, включая ваше имя, адрес электронной почты и номер телефона, дату рождения.</p>
+	</section>
+	
+	<section class="privacy-section">
+		<h2 class="privacy-subtitle">Использование данных</h2>
+		<p class="privacy-text">Собранные данные используются для управления вашей учетной записью и предоставления
+			услуг парковки.</p>
+	</section>
+	
+	<section class="privacy-section">
+		<h2 class="privacy-subtitle">Безопасность данных</h2>
+		<p class="privacy-text">Мы принимаем все необходимые меры для защиты ваших данных от несанкционированного 
+			доступа.</p>
+	</section>
+
+	<section class="privacy-section">
+		<h2 class="privacy-subtitle">Ваши права</h2>
+		<p class="privacy-text">Вы имеете право на доступ к своим данным и их исправление. Вы также можете запросить
+			удаление своих данных.</p>
+	</section>
+	
+	<section class="privacy-section">
+		<h2 class="privacy-subtitle">Контактная информация</h2>
+		<p class="privacy-text">Если у вас есть вопросы по поводу нашей политики конфиденциальности, пожалуйста, 
+			свяжитесь с нами по адресу электронной почты: support@example.com.</p>
+	</section>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/info/privacy.js' %}"></script>
+{% endblock %}

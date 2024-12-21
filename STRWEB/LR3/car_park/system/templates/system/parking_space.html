@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Парковочное место {% endblock %}
+
+{% block content %}
+	<h2>Парковочное место {{ parking_space.number }}</h2>
+	<p>Стоимость за 1 день: {{ parking_space.cost_per_day }} BYN </p>
+	<p>Статус: {% if parking_space.client is None %} Свободно {% else %} Занято {% endif %} </p>
+	{% if parking_space.image %}
+		<img src="{{ parking_space.image.url }}" alt="Здесь должно быть изображение" width="auto" height="200">
+	{% endif %}
+	{% if not user.is_staff %}
+		{% if parking_space.client is None %}
+			<form method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				{% if total_cost %}
+					<p>Сумма брони: {{ total_cost }} BYN</p>
+				{% endif %}
+				{% if coupon_cost %}
+					<p>Влияние купона: {{ coupon_cost }} BYN</p>
+				{% elif total_cost %}
+					<p>Влияние купона: 0 BYN</p>
+				{% endif %}
+				{% if new_total_cost %}
+					<p>Итоговая сумма: {{ new_total_cost }} BYN</p>
+				{% endif %}
+				<button type="submit" name="action" value="calculate">Пересчитать цену</button>
+				<p><button type="submit" name="action" value="pay">Оплатить</button></p>
+			</form>
+
+		{% endif %}
+	{% endif %}
+{% endblock %}

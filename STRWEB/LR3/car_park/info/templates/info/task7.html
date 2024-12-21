@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Задание 7 {% endblock %}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/task7.css' %}">
+{% endblock %}
+
+
+{% block content %} 
+<section class="task-section">
+    <h1> Телефон сотрудника</h1>
+    <div class="forms-container">
+        <form id="addEmployeeForm">
+            <h2>Добавить сотрудника</h2>
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" required>
+            <label for="initials">Инициалы:</label>
+            <input type="text" id="initials" required>
+            <label for="phoneNumber">Номер телефона:</label>
+            <input type="text" id="phoneNumber" required>
+            <button type="submit">Добавить сотрудника</button>
+        </form>
+        <form id="findEmployeeForm">
+            <h2>Найти номер телефона сотрудника</h2>
+            <label for="searchLastName">Фамилия:</label>
+            <input type="text" id="searchLastName" required>
+            <label for="searchInitials">Инициалы:</label>
+            <input type="text" id="searchInitials" required>
+            <button type="submit">Найти сотрудника</button>
+        </form>
+    </div>
+    <div id="result"></div>
+    <div id="employeeList"></div>
+</section>
+{% endblock %} 
+
+{% block js %} 
+    <script src="{% static 'js/task7.js' %}"></script>
+{% endblock %}

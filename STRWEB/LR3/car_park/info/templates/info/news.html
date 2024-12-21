@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/news.css' %}">
+{% endblock %}
+
+{% block content %}
+	<h1> {{ title }} </h1>
+	<div class="article-list">
+        {% for article in articles %}
+            <div class="article-item">
+                <h2>{{ article.title }}</h2>
+                <p class="summary">{{ article.summary }}</p>
+                <p>Последнее изменение: {{ article.last_modification_date }}</p>
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="Здесь должно быть изображение" width="auto" height="150">
+                {% endif %}
+                </br>
+                <a href="{% url 'article' article.id %}">Читать далее</a>
+            </div>
+        {% endfor %}
+    </div>
+	
+{% endblock %}

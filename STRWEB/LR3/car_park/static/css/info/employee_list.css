@@ -1,0 +1,155 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+#search-form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 14px;
+    width: 200px;
+}
+
+#search-form button {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#employee-table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#employee-table th, #employee-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #bbb;
+}
+
+#employee-table th a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#employee-table th a:hover {
+    text-decoration: underline;
+}
+
+#employee-table td button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#employee-table td button:hover {
+    background-color: #0056b3;
+}
+
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    color: #333;
+}
+
+#pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#employee-details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#add-employee-button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#add-employee-button:hover {
+    background-color: #218838;
+}
+
+#select-all {
+    margin-left: 10px;
+}
+
+/* Добавление сотрудника */
+#add-employee-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#add-employee-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#add-employee-form input,
+#add-employee-form select,
+#add-employee-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#add-employee-form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#add-employee-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+#add-employee-form button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+#validation-message {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/contacts.css' %}">
+{% endblock %}
+
+
+{% block content %} 
+	<h1 class="employees-title"> {{ title }} </h1>
+    <div class="employees-container">
+        {% for employee in employees %}
+            <div class="employee-card">
+                {% if employee.image %}
+                    <img class="employee-img" src="{{ employee.image.url }}" alt="Здесь должно быть изображение">
+                {% endif %}
+                <div class="employee-info">
+                    <h3>{{ employee.vacancy.name }}</h3>
+                    <p><b>Имя:</b> {{ employee.user.first_name }} {{ employee.user.last_name }}</p>
+                    <p><b>Телефон:</b> {{ employee.phone_number }}</p>
+                    <p><b>Почта:</b> {{ employee.user.email }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

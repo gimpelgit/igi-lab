@@ -1,0 +1,93 @@
+:root {
+    --color-circle: #1f145d;
+    --border-width: 8;
+    --cut-height-circle-percent: 35;
+    --circle-content: 100;
+    --circle-rotate: 0deg;
+}
+
+
+
+.container-circle {
+    --cut-height-circle: calc(var(--cut-height-circle-percent) * (var(--circle-content) + 2*var(--border-width)) / 100);
+    --radius-circle: calc(var(--circle-content) / 2 + var(--border-width));
+    
+    /* найти точку центра разрезанной границы окружности слева */
+    --cut-y-help: calc(-1*var(--radius-circle) + sqrt(2 * pow(var(--radius-circle), 2) - 2 * var(--radius-circle) * var(--cut-height-circle) + pow(var(--cut-height-circle), 2)));  
+    --cut-x: calc((var(--cut-y-help) + var(--border-width) / 2) * var(--radius-circle) / (var(--cut-y-help) + var(--radius-circle)));
+    --cut-y: calc(var(--cut-height-circle) + var(--cut-x) * (var(--radius-circle) - var(--cut-height-circle)) / var(--radius-circle));
+
+    /* добавляем единицы измерения к переменным */
+    --border-width-px: calc(var(--border-width)*1px);
+    --cut-height-circle-pct: calc(var(--cut-height-circle-percent)*1%);
+
+    --circle-content-px: calc(var(--circle-content)*1px);
+}
+
+.container-circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--circle-content-px) + 2*var(--border-width-px));
+    height: calc(var(--circle-content-px) + 2*var(--border-width-px));
+    transform: rotateZ(var(--circle-rotate));
+}
+
+.circle {
+    position: absolute; 
+    width: var(--circle-content-px);
+    height: var(--circle-content-px);
+    border: var(--border-width-px) solid var(--color-circle);
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% var(--cut-height-circle-pct), 50% 50%, 0 var(--cut-height-circle-pct));
+}
+
+
+.mini-circle {
+    position: absolute;
+    background: var(--color-circle);
+    width: var(--border-width-px);
+    height: var(--border-width-px);
+    border-radius: 50%;
+}
+
+.left-circle {
+    left: calc((var(--cut-x) - var(--border-width) / 2)*1px);
+    top: calc((var(--cut-y) - var(--border-width) / 2)*1px);
+    transform-origin: calc(50% + (var(--radius-circle) - var(--cut-x))*1px) calc(50% + (var(--radius-circle) - var(--cut-y))*1px);
+}
+
+.right-circle {
+    left: calc(100% - (var(--cut-x) + var(--border-width) / 2)*1px);
+    top: calc((var(--cut-y) - var(--border-width) / 2)*1px);
+    transform-origin: calc(50% - (var(--radius-circle) - var(--cut-x))*1px) calc(50% + (var(--radius-circle) - var(--cut-y))*1px);
+}
+
+.anim-right {
+    animation: move-circle-right 2s linear forwards infinite;
+}
+
+.anim-left {
+    animation: move-circle-left 1s linear forwards infinite;
+}
+
+
+
+@keyframes move-circle-right {
+    0% {
+        transform: rotateZ(var(--circle-rotate));
+    }
+    100% {
+        transform: rotateZ(calc(360deg + var(--circle-rotate)));
+    }
+}
+
+@keyframes move-circle-left {
+    0% {
+        transform: rotateZ(var(--circle-rotate));
+    }
+    100% {
+        transform: rotateZ(calc(-360deg + var(--circle-rotate)));
+    }
+}

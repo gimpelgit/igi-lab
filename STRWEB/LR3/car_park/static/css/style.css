@@ -1,0 +1,92 @@
+/* Сбросить все отступы, которые установил браузер по умолчанию */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+body {
+    font-size: 16px;
+    background-color: #eaebee;
+    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+main {
+    margin: 0;
+    padding: 20px;
+}
+
+footer {
+    padding-inline: 8px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-block: 0.83em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-block: 0.83em;
+    margin-inline: 0em;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin-block: 1em;
+}
+
+p {
+    margin-block: 1em;
+}
+
+ul {
+    margin-left: 2em;
+}
+
+/* Логотип компании */
+.logo img {
+    width: 50px;
+    transition: transform 0.6s ease;
+}
+
+.logo:hover img {
+    transform: rotateY(180deg) scaleX(-1);
+}
+
+/* Навигация на сайте */
+.nav-header {
+    position: sticky;
+    top: 0px;
+    background-color: #333;
+    padding: 10px;
+    z-index: 100; 
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    margin: 5px;
+}
+
+
+.nav-item {
+    flex: 1;
+    margin: 3px;
+}
+
+.nav-item a {
+    display: block; 
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-item a:hover {
+    color: #e2e962;
+}

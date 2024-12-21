@@ -1,0 +1,142 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 20px 20px 20px;
+}
+
+.header {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filter-form label {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.filter-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.filter-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #0056b3;
+}
+
+.parking-spaces {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+
+.card-wrapper {
+    --rotateX: 0;
+    --rotateY: 0;
+    position: relative;
+    transform: 
+        perspective(1000px)
+        rotateY(var(--rotateX)) 
+        rotateX(var(--rotateY));
+    transition: transform 0.3s ease;
+}
+
+.parking-space {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.parking-space h3 {
+    margin-top: 0;
+}
+
+.parking-space p {
+    margin: 10px 0;
+} 
+
+.parking-space img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.link-number {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.link-number:hover {
+    color: #0056b3;
+}
+
+
+
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .current {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pagination .step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination .disabled {
+    color: #ccc;
+    pointer-events: none;
+}

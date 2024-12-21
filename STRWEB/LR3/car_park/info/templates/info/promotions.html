@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/info/promotions.css' %}">
+{% endblock %}
+
+{% block content %} 
+	<div class="promotions-container">
+		<h1 class="promotions-title">{{ title }}</h1>
+
+		{% if coupons %}
+			<ul class="promo-list">
+			{% for coupon in coupons %}
+				<li class="promo-item">
+					<div class="coupon-info">
+						<p><b>Код купона:</b> <span class="coupon-code">{{ coupon.code }}</span></p>
+						<p><b>Описание:</b> {{ coupon }}</p>
+					</div>
+					<div class="coupon-actions">
+						{% if coupon.price == 0 %}
+							<p class="free-coupon">Купон абсолютно бесплатный!</p>
+							<a href="{% url 'get-coupon' coupon.id %}" class="btn btn-primary">Получить</a>
+						{% else %}
+							<p class="paid-coupon">Вы можете купить купон за <span class="coupon-price">{{ coupon.price }} BYN</span></p>
+							<a href="#" class="btn btn-secondary">Купить</a>
+						{% endif %}
+					</div>
+				</li>	
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p class="no-coupons">Нет доступных купонов</p>
+		{% endif %}
+	</div>
+{% endblock %}

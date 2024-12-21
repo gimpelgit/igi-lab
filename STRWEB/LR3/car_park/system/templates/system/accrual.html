@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Пополнение счета {% endblock %}
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/system/accrual.css' %}">
+{% endblock %}
+
+{% block content %}
+	<h2>Пополнение счета</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Пополнить</button>
+	</form>
+{% endblock %}

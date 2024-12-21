@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Часто задаваемые вопросы {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/faq.css' %}">
+{% endblock %}
+
+{% block content %}
+	<section class="faq-section">
+		<h1 class="faq-title"> Часто задаваемые вопросы </h1>
+		{% for q in faq %}
+			<details class="faq-item">
+				<summary class="faq-question">{{ q.question }}</summary>
+                <div class="faq-answer">
+				    <p>{{ q.answer|linebreaks }}</p>
+				    <small class="faq-date">Добавлено: {{ q.date_added|date:"d.m.Y" }}</small>
+                </div>
+			</details>
+		{% endfor %}
+	</section>
+	<div style="height: 20px;" hidden></div>
+	<section>
+		<h2>
+			Вы можете прочитать интересные моменты о парковке на сайте 
+			<a target="_blank" href="https://proavtoparking.ru">proavtoparking.ru</a>
+		</h2>
+		<iframe src="https://proavtoparking.ru/parkovki/parkovochnoe-mesto-razmery-dlya-legkovyh-i-gruzovyh-avtomobilej" frameborder="1" 
+			width="70%" height="700" allowfullscreen></iframe>
+	</section>
+{% endblock %}

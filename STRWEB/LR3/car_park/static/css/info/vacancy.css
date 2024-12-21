@@ -1,0 +1,42 @@
+.vacancies-container {
+    padding: 0px;
+    padding-top: 0px;
+}
+
+.vacancies-container h1 {
+    text-align: center;
+    font-size: 2em;
+}
+
+.vacancies-container::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+.vacancy-item {
+    float: left;
+    width: 45%;
+    margin: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vacancy-item:nth-child(odd) {
+    float: right;
+}
+
+
+
+.vacancy-title {
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+
+.vacancy-text {
+    margin-bottom: 5px;
+}

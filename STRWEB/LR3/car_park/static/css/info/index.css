@@ -1,0 +1,41 @@
+/* Партнеры */
+.partner {
+    display: inline-block;
+}
+
+.partner-logo-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 5px;
+    object-fit: contain;
+}
+
+.partner-logo-link {
+    text-decoration: none;
+}
+
+/* Последняя статья */
+.last-article {
+    position: relative;
+    top: 5px;
+    background-color: #ffffff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.delay-control {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.delay-control input {
+    width: 60px;
+    text-align: center;
+    margin-left: 10px;
+}

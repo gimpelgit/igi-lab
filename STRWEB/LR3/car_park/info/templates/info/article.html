@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ article.title }} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/info/article.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="article-page">
+    <h1 class="article-title">{{ article.title }}</h1>
+
+    <div class="article-meta">
+        <p class="article-summary">Краткое описание: {{ article.summary }}</p>
+        <p class="article-last-modification">Последнее изменение: {{ article.last_modification_date }}</p>
+    </div>
+
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Здесь должно быть изображение" class="article-image">
+    {% endif %}
+
+    <div class="article-body">
+        {{ article.body }}
+    </div>
+</article>
+{% endblock %}

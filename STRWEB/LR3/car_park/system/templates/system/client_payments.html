@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} История оплат клиента {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/system/client_payments.css' %}">
+{% endblock %}
+
+{% block content %}
+	<h2>История оплат клиента {{ client.user.get_full_name }}</h2>
+
+	{%if payments %}
+		<table border="1" class="payments-table">
+			<tr>
+				<th id="id">ID</th>
+				<th id="payment-date">Дата оплаты</th>
+				<th id="reservation-start-date">Дата начала бронирования</th>
+				<th id="reservation-end-date">Дата окончания бронирования</th>
+				<th id="number">Номер машины</th>
+				<th id="model">Модель машины</th>
+				<th id="brand">Марка машины</th>
+				<th id="number-parking-space">Номер парковочного места</th>
+				<th id="cost">Стоимость</th>
+			</tr>
+			{% for payment in payments %}
+				<tr>
+					<td headers="id">{{ payment.id }}</td>
+					<td headers="payment-date">{{ payment.payment_date|date:"d.m.Y" }}</td>
+					<td headers="reservation-start-date">{{ payment.reservation_start_date|date:"d.m.Y" }}</td>
+					<td headers="reservation-end-date">{{ payment.reservation_end_date|date:"d.m.Y" }}</td>
+					<td headers="number">{{ payment.car.number }}</td>
+					<td headers="model">{{ payment.car.model }}</td>
+					<td headers="brand">{{ payment.car.brand }}</td>
+					<td headers="number-parking-space">{{ payment.number_parking_space }}</td>
+					<td headers="cost">{{ payment.total_cost }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Здесь пусто</p>
+	{% endif %}
+{% endblock %}

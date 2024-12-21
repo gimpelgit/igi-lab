@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+	<meta name="description" content="О компнаии {{ main_company.name }}, история компании, видео, сертификат">
+{% endblock %}
+
+{% block title %} О нас {% endblock %}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'css/info/about.css' %}">
+{% endblock %}
+
+{% block content %} 
+	<h1> О нас </h1>
+
+    <div id="countdown-timer">
+        <p>Оставшееся время до конца отсчета: <span id="time-left"></span></p>
+    </div>
+
+    <div class="link">
+        <a href="{% url 'task7' %}">Поиск телефона сотрудника (инифиалы + фамилия)</a>
+    </div>
+    <div class="link">
+        <a href="{% url 'task9' %}">График</a>
+    </div>
+    <div class="link">
+        <a href="{% url 'task8' %}">Скролл</a>
+    </div>
+
+	<section class="navigation-about-company">
+		<h2>Содержание</h2>
+		<ul class="navigation-list">
+			<li><a href="#description">Перейти к описанию компании</a></li>
+			<li><a href="#cert">Перейти к сертификату компании</a></li>
+			<li><a href="#video">Перейти к видео компании</a></li>
+			<li><a href="#history">Перейти к истории компании</a></li>
+		</ul>
+	</section>
+
+	<section class="description-about-company">
+		<h2 id="description">Описание</h2>
+        <p>Автостоянка <span class="company-name">{{ main_company.name }}</span> — это идеальное решение для вашего
+            комфорта и удобства в городе.
+        </p>
+		<p itemprop="description">{{ main_company.description }}</p>
+		<blockquote>	
+			<p>Наша цель — сделать парковку удобной и доступной для каждого.</p>
+		</blockquote>
+	</section>
+
+	<section>
+		<h2 id="cert">Сертификат компании</h2>
+		<div class="certificate-container">
+            <div class="certificate">
+                <div class="certificate-header">
+                    <h1>СВИДЕТЕЛЬСТВО</h1>
+                    <p>о внесении сведений</p>
+                </div>
+                <div class="certificate-body">
+                    <p>Общество с ограниченной ответственностью «{{ main_company.name }}»</p>
+                    <p>(ИНН 773130255)</p>
+                    <p>Ресурсный номер: 244</p>
+                </div>
+                <div class="certificate-footer">
+                    <div class="footer-column">
+                        <p>Дата выдачи: 10.10.2023</p>
+                        <p>Действительно до: 10.10.2028</p>
+                        <p>Адрес: г. Минск, ул. Колабина, д. 1</p>
+                    </div>
+                    <div class="footer-column">
+                        <p>Телефон: +7 (495) 123-45-67</p>
+                        <p>Email: info@avtodostoyanka.ru</p>
+                        <p>Генеральный директор: Гимпель Кирилл Александрович</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<a href="/media/images/company/cert/main_cert.jpg" download>Скачать</a>
+	</section>
+
+	<section class="video-section">
+        <h2 id="video" class="video-title">Видео</h2>
+        <div class="video-container">
+            <video class="video-player" controls>
+                <source src="/media/videos/parking_advertisement.mp4" type="video/mp4">
+                Ваш браузер не поддерживает тег video.
+            </video>
+        </div>
+    </section>
+    
+
+    <section class="history-company">
+        <h2 id="history" class="history-title">История компании</h2>
+        <ul class="history-list" itemscope itemtype="http://schema.org/Event">
+            {% for event in history %}
+                <li class="history-item" itemprop="event">
+                    <div class="history-year">
+                        <time itemprop="startDate" datetime="{{ event.year }}">{{ event.year }}</time>
+                    </div>
+                    <div class="history-description">
+                        <span itemprop="about">{{ event.event_description }}</span>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="history-item no-history">История отсутствует.</li>
+            {% endfor %}
+        </ul>
+    </section>
+    
+{% endblock %}
+
+{% block js %} 
+    <script src="{% static 'js/timer.js' %}"></script>
+{% endblock %}

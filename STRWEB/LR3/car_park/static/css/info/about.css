@@ -1,0 +1,245 @@
+:root {
+    --border-width: 50px;
+    --light-color: #f8f9fa;
+    --history-elem-color: #007BFF;
+    --certificate-color: var(--history-elem-color);
+    --video-elem-color: var(--history-elem-color);
+}
+
+span.company-name {
+    font-family: "Arial", sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.company-name::before {
+    content: '«';
+}
+
+.company-name::after {
+    content: '»';
+}
+
+.certificate-container {
+    padding: 20px;
+}
+
+.certificate {
+    position: relative;
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+    background-image: url(/static/img/cert-background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: var(--border-width) solid transparent;
+    border-image-source: url(/static/img/cert-border.png);
+    border-image-slice: 125;
+    border-image-repeat: round;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: 'Times New Roman', serif;
+    z-index: 10;
+}
+
+
+.certificate-header {
+    margin-bottom: 30px;
+}
+
+.certificate-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: var(--certificate-color);
+}
+
+.certificate-header p {
+    font-size: 1.2em;
+    margin: 0;
+    color: var(--certificate-color);
+}
+
+
+.certificate-body {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.certificate-body p {
+    margin: 10px 0;
+}
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 100px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.footer-column {
+    flex: 1;
+    text-align: left;
+}
+
+.certificate-footer p {
+    margin: 5px 0;
+}
+
+
+.certificate::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    width: calc(100% + 2*var(--border-width)); 
+    height: calc(100% + 2*var(--border-width)); 
+    background: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(255, 255, 255, 0.5), rgba(128, 128, 128, 0.5));
+    z-index: -1;
+}
+
+/* история компании */
+.history-company {
+    background: var(--light-color);
+    padding: 20px 20px 5px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.history-title {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    color: var(--history-elem-color);
+    font-weight: bold;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-item {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 4px solid var(--history-elem-color);
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-item:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.history-year {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--history-elem-color);
+    margin-right: 15px;
+}
+
+.history-description {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+
+.no-history {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+
+@media(max-width: 600px) {
+    .certificate {
+        padding: 0;
+        font-size: 0.83em;
+    }
+
+    .certificate-header h1 {
+        font-size: 2em;
+    }
+
+    .certificate-body {
+        font-size: 1em;
+    }
+}
+
+
+.video-section {
+    background: var(--light-color); 
+    padding: 30px 20px;
+    margin: 30px 0px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.video-title {
+    font-size: 1.8em;
+    margin: 0;
+    margin-bottom: 20px;
+    color: var(--video-elem-color);
+    font-weight: bold;
+}
+
+
+.video-container {
+    display: inline-block;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.video-player {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* содержание страницы */
+.navigation-about-company {
+    margin: 20px 0;
+}
+
+.navigation-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.navigation-list li::before {
+    content: '➤';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.navigation-list a {
+    text-decoration: none;
+    color: #333;
+}
+
+.navigation-list a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
+{% endblock %}
+
+{% block content %} 
+	<h1> {{ title }} </h1>
+
+	<form method="post" class="styled-form">
+		{% csrf_token %}
+		<input type="hidden" name="next" value="{{ next }}"/>
+		{{ form.as_p }}
+		<p><button type="submit">Войти</button></p>
+	</form>
+	<a href="{% url 'register' %}">Bы еще не зарегистрированы?</a>
+{% endblock %}
