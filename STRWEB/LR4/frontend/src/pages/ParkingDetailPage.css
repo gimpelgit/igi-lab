@@ -1,0 +1,94 @@
+.parking-detail {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px solid #ddd; 
+}
+
+.container.parking-detail {
+    margin-top: 8px;
+}
+
+.parking-detail.premium {
+    border: 2px solid #ffcc00; 
+}
+
+.parking-detail h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.parking-detail p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+.parking-detail .price {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.parking-detail .status {
+    font-weight: bold;
+}
+
+.parking-detail .status.free {
+    color: #27ae60;
+}
+
+.parking-detail .status.occupied {
+    color: #e74c3c;
+}
+
+
+.rental-form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rental-form h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.rental-form input,
+.rental-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.rental-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.rental-form button:hover {
+    background-color: #2980b9;
+}
+
+p.error-message {
+    color: red; 
+    font-size: 1.2em;
+    margin-top: 5px; 
+    font-weight: bold;
+}

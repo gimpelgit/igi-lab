@@ -1,0 +1,118 @@
+.car-form {
+    display: flex;
+    flex-direction: column; /* Поля и ошибки в столбец */
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 400px; /* Ограничиваем максимальную ширину формы */
+    width: 100%; /* Занимает всю доступную ширину в пределах max-width */
+    padding: 20px; /* Добавляем внутренний отступ */
+    border: 1px solid #ddd; /* Добавляем границу */
+    border-radius: 8px; /* Скругляем углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+    background-color: #f9f9f9; /* Добавляем фоновый цвет */
+}
+
+.car-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.car-form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    align-self: center; /* Выравниваем кнопку по центру */
+}
+
+.car-form button:hover {
+    background-color: #2980b9;
+}
+
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.car-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.car-item h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.car-item p {
+    color: #7f8c8d;
+}
+
+.car-item button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.car-item button:hover {
+    background-color: #2980b9;
+}
+
+.car-item button:active {
+    background-color: #1f618d;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin-bottom: 10px; 
+}
+
+.edit-form input {
+    padding: 10px;
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    font-size: 1rem;
+}
+
+.edit-form button {
+    padding: 10px 20px;
+    background-color: #3498db; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    font-size: 1rem;
+    align-self: center; 
+}
+
+.edit-form button:hover {
+    background-color: #2980b9; 
+}
+
+.edit-form button:active {
+    background-color: #1f618d; 
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}

@@ -1,0 +1,94 @@
+/* Стили для страницы каталога парковочных мест */
+.parking-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.parking-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parking-item.premium {
+    border: 2px solid #ffcc00;
+}
+
+.parking-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.parking-item h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.parking-item p {
+    color: #7f8c8d;
+}
+
+.parking-item .status {
+    font-weight: bold;
+}
+
+.parking-item .status.free {
+    color: #27ae60;
+}
+
+.parking-item .status.occupied {
+    color: #e74c3c;
+}
+
+/* Стили для ссылки на детальный просмотр парковочного места */
+.parking-item a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #3498db; 
+    color: white;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.parking-item a:hover {
+    background-color: #2980b9; 
+    transform: translateY(-2px);
+}
+
+.parking-item a:active {
+    background-color: #1f618d; 
+}
+
+
+/* Стили для фильтрации и поиска */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.sort-select {
+    width: 35%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}

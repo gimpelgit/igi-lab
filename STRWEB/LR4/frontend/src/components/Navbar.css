@@ -1,0 +1,36 @@
+/* Стили для навигационной панели */
+nav {
+    background-color: #2c3e50;
+    padding: 10px 0;
+    text-align: center;
+}
+  
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #34495e;  
+}
+
+/* Стили для ссылки "Выйти" */
+.logout-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: #e74c3c; /* Красный цвет */
+}
+
+.logout-link:hover {
+    background-color: #c0392b; /* Темно-красный цвет при наведении */
+}
