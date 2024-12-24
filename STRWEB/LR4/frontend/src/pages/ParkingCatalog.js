@@ -10,7 +10,6 @@ const ParkingCatalog = () => {
     const [sortBy, setSortBy] = useState('number');
 
     useEffect(() => {
-        // Загружаем список парковочных мест с сервера
         axios.get('/api/parking/parking-spaces')
             .then((response) => {
                 setParkingSpaces(response.data);

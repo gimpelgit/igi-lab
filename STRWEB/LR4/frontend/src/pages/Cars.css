@@ -1,15 +1,15 @@
 .car-form {
     display: flex;
-    flex-direction: column; /* Поля и ошибки в столбец */
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
-    max-width: 400px; /* Ограничиваем максимальную ширину формы */
-    width: 100%; /* Занимает всю доступную ширину в пределах max-width */
-    padding: 20px; /* Добавляем внутренний отступ */
-    border: 1px solid #ddd; /* Добавляем границу */
-    border-radius: 8px; /* Скругляем углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень */
-    background-color: #f9f9f9; /* Добавляем фоновый цвет */
+    max-width: 400px; 
+    width: 100%; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #f9f9f9; 
 }
 
 .car-form input {
@@ -28,7 +28,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 1rem;
-    align-self: center; /* Выравниваем кнопку по центру */
+    align-self: center; 
 }
 
 .car-form button:hover {

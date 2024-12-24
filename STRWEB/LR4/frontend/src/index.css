@@ -10,13 +10,11 @@ body {
 }
 
 
-/* Для всех ссылок */
 a {
     text-decoration: none;
     color: inherit;
 }
   
-/* Глобальные отступы */
 .container {
     width: 80%;
     margin: 0 auto;

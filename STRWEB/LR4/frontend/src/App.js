@@ -27,12 +27,10 @@ function App() {
     }, []);
 
     const handleLogout = () => {
-        // Удаляем токен и данные пользователя из localStorage
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         localStorage.removeItem('name');
 
-        // Обновляем состояние
         setIsAuthenticated(false);
         setUsername('');
         setName('');

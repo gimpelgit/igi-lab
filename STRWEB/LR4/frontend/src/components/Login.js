@@ -9,7 +9,6 @@ const Login = ({ setIsAuthenticated, setNameApp, setUsernameApp }) => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    // Проверяем, есть ли уже токен в localStorage
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {

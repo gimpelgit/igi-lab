@@ -21,7 +21,6 @@ app.use(cors({
     methods: 'GET,POST,PUT,DELETE',
 }));
 
-// удалить если не нужны 
 app.use(session({
     secret: 'secretkey', 
     resave: false,

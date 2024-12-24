@@ -1,4 +1,3 @@
-/* Стили для страницы каталога парковочных мест */
 .parking-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -45,7 +44,6 @@
     color: #e74c3c;
 }
 
-/* Стили для ссылки на детальный просмотр парковочного места */
 .parking-item a {
     display: inline-block;
     text-decoration: none;
@@ -69,7 +67,6 @@
 }
 
 
-/* Стили для фильтрации и поиска */
 .filter-section {
     display: flex;
     justify-content: space-between;

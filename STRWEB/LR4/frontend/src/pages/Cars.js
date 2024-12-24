@@ -93,7 +93,7 @@ const Cars = () => {
                 year: Number(editYear),
             });
             setCars(cars.map(car => car._id === id ? response.data : car));
-            setEditingCarId(null); // Завершаем режим редактирования
+            setEditingCarId(null);
             setEditBrand('');
             setEditModel('');
             setEditYear('');

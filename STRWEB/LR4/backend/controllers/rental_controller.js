@@ -19,19 +19,16 @@ exports.createRental = async (req, res) => {
             return res.status(400).json({ message: 'Машина уже используется в другой аренде' });
         }
 
-        // Получаем стоимость парковочного места
         const parkingSpace = await ParkingSpace.findById(parkingSpaceId);
         if (!parkingSpace) {
             return res.status(404).json({ message: 'Парковочное место не найдено' });
         }
 
-        // Вычисляем общую стоимость аренды
         const end = new Date(endDate);
         const days = Math.ceil((end - new Date()) / (1000 * 60 * 60 * 24)) + 1;
         const totalPrice = parkingSpace.price * days;
 
 
-        // Создаем новую аренду
         const rental = new Rental({
             parkingSpaceId,
             userId,
@@ -42,7 +39,6 @@ exports.createRental = async (req, res) => {
 
         await rental.save();
 
-        // Обновляем статус парковочного места на "занято"
         await ParkingSpace.findByIdAndUpdate(parkingSpaceId, { isOccupied: true });
 
         res.status(201).json({ message: 'Аренда успешно создана', rental });

@@ -4,10 +4,8 @@ const authController = require('../controllers/auth_controller');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-// Регистрация
 router.post('/register', authController.register);
 
-// Логин
 router.post('/login', authController.login);
 
 // Facebook аутентификация

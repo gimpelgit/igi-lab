@@ -1,5 +1,4 @@
 const ParkingSpaces = require('../models/parking_spaces');
-// const Reservation = require('../models/Reservation');
 
 exports.getParkingSpaces = async (req, res) => {
     try {
